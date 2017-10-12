@@ -1,0 +1,4 @@
+./Memory/bin/Debug/*
+./Memory/bin/Release/*
+./Memory/obj/Debug/*
+./Memory/obj/Release/*
