@@ -3,5 +3,7 @@
 // {direction:topDown}
 
 [Card|-id:int;-symbol:string;-isHidden:bool|+setId(value:Int):void;getId():int]
-[Pair|-card1:Card;-card2:Card;-isFound:bool|]<>1-2>[Card]
-[Board|-Pairs:Pair|]++1-*>[Pair]
+[Pair|-card1:Card;-card2:Card;-isFound:bool|]
+[Board|-Pairs:Pair|]
+[Pair]<>1-2>[Card]
+[Board]++1-*>[Pair]
