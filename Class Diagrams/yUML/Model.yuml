@@ -1,0 +1,10 @@
+// Model Class Diagram
+// {type:class}
+// {direction:topDown}
+
+[Card|-id:int;-symbol:string;-isHidden:bool|+setId(value:Int):void;getId():int]
+
+// Warning : Line not working for generation due to <>
+// [Board|-Pairs:Pair;-foundPairs:Dictionary<int, bool>|]
+
+[Board]++1-*>[Card]
