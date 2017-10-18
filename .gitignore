@@ -1,4 +1,6 @@
-Memory/bin/Debug/*
-Memory/bin/Release/*
-Memory/obj/Debug/*
-Memory/obj/Release/*
+# Compiled files
+Memory/bin/
+Memory/obj/
+
+# Local files used by Visual Studio
+.vs/
