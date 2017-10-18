@@ -22,6 +22,8 @@ namespace Memory
     {
         public MainWindow()
         {
+            Console.Write("Test");
+            int a = Console.Read();
             InitializeComponent();
         }
     }
