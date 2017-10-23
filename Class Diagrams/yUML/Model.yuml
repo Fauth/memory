@@ -2,7 +2,7 @@
 // {type:class}
 // {direction:topDown}
 
-[Card|-id:int;-symbol:string;-isHidden:bool|+setId(value:Int):void;getId():int]
+[Card|-id:int;-symbol:string;-isHidden:bool;-int:pair|+setId(value:Int):void;getId():int]
 
 // Warning : Line not working for generation due to <>
 // [Board|-Pairs:Pair;-foundPairs:Dictionary<int, bool>|]
