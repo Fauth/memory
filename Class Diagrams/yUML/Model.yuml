@@ -2,9 +2,8 @@
 // {type:class}
 // {direction:topDown}
 
-[Card|-id:int;-symbol:string;-isHidden:bool;-int:pair|+setId(value:Int):void;getId():int]
+[Board|-cards:List<Card>;-score:int|+definePositions():void;+setScore(int):void;+getScore():int]
 
-// Warning : Line not working for generation due to <>
-// [Board|-Pairs:Pair;-foundPairs:Dictionary<int, bool>|]
+[Card|-id:int;-symbol:string;-isFound:bool;-isHidden:bool;-cardPaired:int;-pos:Tuple<int,int>|+setId(int):void;+getId():int;+setIsFound(bool):void;+getIsFound():bool;+setIsHidden(bool):void;+getIsHidden():bool;+setCardPair(int):void;+getCardPair():int;+setPos(Tuple<int,int>):void;+getPos():Tuple<int,int>]
 
 [Board]++1-*>[Card]

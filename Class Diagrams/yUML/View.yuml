@@ -1,0 +1,5 @@
+// View Class Diagram
+// {type:class}
+// {direction:topDown}
+
+[mainWindows||+updateDisplay(Game):void;+waitInput():void]

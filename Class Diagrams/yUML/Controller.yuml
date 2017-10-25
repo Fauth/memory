@@ -1,0 +1,7 @@
+// Controller Class Diagram
+// {type:class}
+// {direction:topDown}
+
+[Game|-score:int;-firstCard:int;-secondCard:int|+cardChosen(int):void;-checkPair():bool;-isGameFinished():bool]
+
+
