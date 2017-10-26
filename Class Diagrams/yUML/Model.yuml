@@ -2,8 +2,8 @@
 // {type:class}
 // {direction:topDown}
 
-[Board|-cards:List<Card>;-score:int|+definePositions():void;+setScore(int):void;+getScore():int]
+[Board|-cards:List<Card>;-score:int|+DefinePositions():void;+SetScore(int):void;+GetScore():int]
 
-[Card|-id:int;-symbol:string;-isFound:bool;-isHidden:bool;-cardPaired:int;-pos:Tuple<int,int>|+setId(int):void;+getId():int;+setIsFound(bool):void;+getIsFound():bool;+setIsHidden(bool):void;+getIsHidden():bool;+setCardPair(int):void;+getCardPair():int;+setPos(Tuple<int,int>):void;+getPos():Tuple<int,int>]
+[Card|-id:int;-symbol:string;-isFound:bool;-isHidden:bool;-cardPaired:int;-pos:Tuple<int,int>|+SetId(int):void;+GetId():int;+SetIsFound(bool):void;+GetIsFound():bool;+SetIsHidden(bool):void;+GetIsHidden():bool;+SetCardPair(int):void;+GetCardPair():int;+SetPos(Tuple<int,int>):void;+GetPos():Tuple<int,int>]
 
 [Board]++1-*>[Card]

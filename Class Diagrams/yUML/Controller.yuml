@@ -2,6 +2,6 @@
 // {type:class}
 // {direction:topDown}
 
-[Game|-score:int;-firstCard:int;-secondCard:int|+cardChosen(int):void;-checkPair():bool;-isGameFinished():bool]
+[Game|-score:int;-firstCard:int;-secondCard:int|+CardChosen(int):void;-CheckPair():bool;-IsGameFinished():bool]
 
 

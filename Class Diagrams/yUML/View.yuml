@@ -2,4 +2,4 @@
 // {type:class}
 // {direction:topDown}
 
-[mainWindows||+updateDisplay(Game):void;+waitInput():void]
+[mainWindows||+UpdateDisplay(Game):void;+WaitInput():void]
