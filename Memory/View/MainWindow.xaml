@@ -7,13 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="44" Height="75">
+        <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Name="{Binding Name}"
+                            Click="Card_Click"
+                            Margin="{Binding Margin}"
+                            />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!--<Button x:Name="C1" HorizontalAlignment="Left" Margin="{Binding Margin.Left, ElementName=C1}" VerticalAlignment="Top" Width="127" Height="200" Click="C1_Click">
             <Button.Background>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Hanafuda_10-4.svg.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
         <Button Content="Button" HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top" Width="44" Height="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="44" Height="75"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="44" Height="75"/>-->
 
     </Grid>
+    
 </Window>
