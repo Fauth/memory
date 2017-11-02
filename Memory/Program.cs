@@ -1,8 +1,12 @@
-﻿namespace Memory
+﻿using System;
+using Memory.View;
+    
+namespace Memory
 {
     class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        public static void Main()
         {
             Game game = new Game(4, 4);
         }
