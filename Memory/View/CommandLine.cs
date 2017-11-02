@@ -9,8 +9,8 @@ namespace Memory.View
     {
         // Attributes
 
-        Board board;
-        Game game;
+        private Board board;
+        private Game game;
 
         // Accessors/Mutators
 
