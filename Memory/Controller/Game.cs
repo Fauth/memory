@@ -45,7 +45,7 @@ namespace Memory
             if (card.GetIsDisplayed()) // A displayed card cannot be chosen
             {
                 Console.Write("Card already displayed! Please choose another:\n\n");
-                console.WaitPlayer();
+                CardChosen(console.WaitPlayer());
             }
             else if (firstCardSelected == null) // If it is the first selected card
             {
