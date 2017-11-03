@@ -4,19 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory.View"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300">
     <Grid>
+
         <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Name="{Binding Name}"
-                            Click="Card_Click"
+                    <Button Content="{Binding Content}"
+                            Click="{Binding Click}"
                             Margin="{Binding Margin}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" 
+                            Width="127" 
+                            Height="200"                            
+                            Background="Blue"
                             />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+
+       
+
         <!--<Button x:Name="C1" HorizontalAlignment="Left" Margin="{Binding Margin.Left, ElementName=C1}" VerticalAlignment="Top" Width="127" Height="200" Click="C1_Click">
             <Button.Background>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Hanafuda_10-4.svg.png" Stretch="UniformToFill"/>
