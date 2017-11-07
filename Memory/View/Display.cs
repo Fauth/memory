@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 using Memory.Model;
 
@@ -12,10 +13,8 @@ namespace Memory.View
     class Display
     {
         // Attributes
-
-        private Board board;
         private Game game;
-
+        private Board board;
         private MainWindow mainWindow;
 
         // Accessors/Mutators
@@ -27,13 +26,14 @@ namespace Memory.View
         /// </summary>
         /// <param name="board">The board used in the game.</param>
         /// <param name="game">The game.</param>
-        public Display(Board board, Game game)
+        public Display()
         {
-            this.board = board;
-            this.game = game;
-
+            game = new Game(this, 4, 4);
+            board = game.GetBoard();
             mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
+
+            PrintBoard();
+            game.NextTurn();
         }
 
         // Methods
@@ -43,9 +43,15 @@ namespace Memory.View
         /// </summary>
         public void PrintBoard()
         {
-            //Card[][] cards = board.GetCards(); // The cards to display
+            Card[][] cards = board.GetCards(); // The cards to display
 
-            //Console.Clear(); // Hide the previous prints
+            for (int y = 0; y < board.GetY(); y++)
+            {
+                for (int x = 0; x < board.GetX(); x++)
+                {
+                    mainWindow.CreateCard(50,50,100,10);
+                }
+            }
 
             //Console.WriteLine($"Turn {board.GetTurns()}");
             //Console.WriteLine("Here's the current board:\n");

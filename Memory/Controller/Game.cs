@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 using Memory.Model;
 using Memory.View;
@@ -18,6 +19,8 @@ namespace Memory
 
         // Accessors/Mutators
 
+        public Board GetBoard() => board;
+
 
         // Constructors
 
@@ -26,12 +29,10 @@ namespace Memory
         /// </summary>
         /// <param name="X">Number of colons of cards.</param>
         /// <param name="Y">Number of lines of cards.</param>
-        public Game(int X, int Y)
+        public Game(Display display, int X, int Y)
         {
+            this.display = display;
             board = new Board(X, Y);
-            display = new Display(board, this);
-
-            NextTurn();
         }
 
         // Methods
@@ -81,6 +82,7 @@ namespace Memory
 
         public void NextTurn()
         {
+            System.Threading.Thread.Sleep(20000);
             //if (IsFinished())
             //{
             //    display.PrintTurns();

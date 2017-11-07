@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
+
 
 namespace Memory.View
 {
@@ -22,6 +24,19 @@ namespace Memory.View
         public MainWindow()
         {
             InitializeComponent();
+            CreateCard(100, 0, 100, 100);
+            this.Show();
+        }
+
+
+        public void CreateCard(int x, int y, int width, int height)
+        {
+            System.Windows.Controls.Button card = new Button();
+            card.Margin = new Thickness(x, y,0,0);
+            card.Height = 40;
+            card.Width = 300;
+            card.Content = "A New Button";
+            grid.Children.Add(card);
         }
     }
 }

@@ -5,15 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="44" Height="75">
-            <Button.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Hanafuda_10-4.svg.png" Stretch="UniformToFill"/>
-            </Button.Background>
-        </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top" Width="44" Height="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="44" Height="75"/>
+        Title="MainWindow" Height="300" Width="500">
 
+    <Grid x:Name="grid">
     </Grid>
 </Window>
