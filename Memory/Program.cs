@@ -8,7 +8,7 @@ namespace Memory
         [STAThread]
         public static void Main()
         {
-            Display display = new Display();
+            Display display = new Display(4, 4);
         }
     }
 }

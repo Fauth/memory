@@ -19,11 +19,9 @@
         public string SetSymbol(string symbol) => this.symbol = symbol;
 
         public bool GetIsDisplayed() => isDisplayed;
-
         public void SetIsDisplayed(bool isDisplayed) => this.isDisplayed = isDisplayed;
 
         public bool GetIsFound() => isDisplayed;
-
         public void SetIsFound(bool isFound) => this.isFound = isFound;
 
 

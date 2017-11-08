@@ -118,39 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Hanafuda_10_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_10-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_11_3_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_11-3.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_11_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_11-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_12_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_12-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_13_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_13-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_1_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_1-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_2_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_2-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_4_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_4-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_7_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_7-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_8_3_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_8-3.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hanafuda_9_4_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hanafuda_9-4.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

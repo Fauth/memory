@@ -82,7 +82,7 @@ namespace Memory
 
         public void NextTurn()
         {
-            System.Threading.Thread.Sleep(20000);
+            System.Threading.Thread.Sleep(2000);
             //if (IsFinished())
             //{
             //    display.PrintTurns();

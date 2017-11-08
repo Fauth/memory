@@ -45,15 +45,16 @@ namespace Memory.Model
                 cards[i] = new Card[X];
             }
 
-            int symbol = 0; // Here the symbol will be an incremented int
+            int pair = 0; // Here the pair number will be an incremented int
             for (int y = 0; y < Y; y++) // Creation of every pair of cards
             {
                 for (int x = 0; x < X; x++)
                 {
-                    cards[y][x] = new Card(symbol.ToString()); // The first card of the pair. The symbol is the "number" of the card
+                    string symbol = "symbols[" + pair + "]";
+                    cards[y][x] = new Card(symbol); // The first card of the pair.
                     if (x+1 >= X) // If the line is finished the program goes to the next line and takes the first card as the paired card
                     {
-                        cards[y + 1][0] = new Card(symbol.ToString()); // Same symbol as the first card of the pair
+                        cards[y + 1][0] = new Card(symbol); // Same symbol as the first card of the pair
                         cards[y + 1][0].SetCardPaired(cards[y][x]);
                         cards[y][x].SetCardPaired(cards[y + 1][0]);
                         y++;
@@ -61,12 +62,12 @@ namespace Memory.Model
                     }
                     else // If the line is not finished the program takes the next card in the line as the paired card
                     {
-                        cards[y][x + 1] = new Card(symbol.ToString());
+                        cards[y][x + 1] = new Card(symbol);
                         cards[y][x + 1].SetCardPaired(cards[y][x]);
                         cards[y][x].SetCardPaired(cards[y][x + 1]);
                         x++;
                     }
-                    symbol++; // The symbol is incremented, as it must be unique to each pair
+                    pair++; // The symbol is incremented, as it must be unique to each pair
                 }
             }
 
@@ -104,15 +105,15 @@ namespace Memory.Model
         public void IncrementTurns() => turns++;
 
         /// <summary>
-        /// Shuffles an array of cards.
+        /// Shuffles an array of any objects.
         /// </summary>
         /// <param name="array">The array to shuffle.</param>
-        private void ShuffleArray(Card[] array)
+        public static void ShuffleArray(object[] array)
         {
             Random random = new Random(); // Generates random numbers
             for (int i = 0; i < array.Length; i++)
             {
-                Card temp = array[i]; // Each element is switched with one of those following
+                object temp = array[i]; // Each element is switched with one of those following
                 int randomIndex = random.Next(i, array.Length);
                 array[i] = array[randomIndex];
                 array[randomIndex] = temp;

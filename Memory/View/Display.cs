@@ -1,8 +1,18 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.IO;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Diagnostics;
 
 using Memory.Model;
@@ -16,51 +26,90 @@ namespace Memory.View
         private Game game;
         private Board board;
         private MainWindow mainWindow;
+        public const int CARD_X = 127; // Width (in pixels) of every card
+        public const int CARD_Y = 200; // Height (in pixels) of every card
 
         // Accessors/Mutators
 
         // Constructors
 
         /// <summary>
-        /// Creates a graphical interface for the game.
+        /// Creates a graphical interface for the game and initializes the game itself
         /// </summary>
-        /// <param name="board">The board used in the game.</param>
-        /// <param name="game">The game.</param>
-        public Display()
+        /// <param name="X">The number of columns of cards.</param>
+        /// <param name="Y">The number of lines of cards.</param>
+        public Display(int X, int Y)
         {
-            game = new Game(this, 4, 4);
+            game = new Game(this, X, Y);
             board = game.GetBoard();
             mainWindow = new MainWindow();
+            mainWindow.SizeToContent = SizeToContent.WidthAndHeight;
+            mainWindow.Height = 900;
+            mainWindow.Width = 900;
+            mainWindow.Left = 0; // The startup position is at the top left
+            mainWindow.Top = 0;
 
+            LoadImages(); 
             PrintBoard();
+            game.NextTurn(); // Wait
+            game.NextTurn();
             game.NextTurn();
         }
 
         // Methods
 
         /// <summary>
+        /// Load all the images present in the ./resources/cards directory 
+        /// </summary>
+        public void LoadImages()
+        {
+            string[] filePaths = Directory.GetFiles(@"./Resources/Cards/"); // All available files
+            Board.ShuffleArray(filePaths); // Shuffles the list to get different images each game
+            BitmapImage[] symbols = new BitmapImage[filePaths.Length]; // An array containing all the images
+            for (int i = 0;  i < filePaths.Length; i ++)
+            {
+                symbols[i] = new BitmapImage(new Uri(filePaths[i], UriKind.Relative));
+            }
+        }
+
+        /// <summary>
         /// Updates the display.
         /// </summary>
         public void PrintBoard()
         {
-            Card[][] cards = board.GetCards(); // The cards to display
+            mainWindow.grid.ShowGridLines = true;
 
+            for (int x = 0; x < board.GetX(); x++)
+            {
+                ColumnDefinition column = new ColumnDefinition();
+                mainWindow.grid.ColumnDefinitions.Add(column);
+            }
             for (int y = 0; y < board.GetY(); y++)
             {
-                for (int x = 0; x < board.GetX(); x++)
+                RowDefinition row = new RowDefinition();
+                mainWindow.grid.RowDefinitions.Add(row);
+            }
+            //mainWindow.wrapPanel.Margin = new Thickness(20); // 20 pixels margin around the panel: the right and bottom margins will be created by the cards
+            //mainWindow.wrapPanel.MaxHeight = board.GetY() * (CARD_Y + 20); // The height of the board
+            //mainWindow.wrapPanel.MaxWidth = board.GetX() * (CARD_X + 20); // The width of the board
+            //mainWindow.wrapPanel.MaxHeight = 1000;
+            //mainWindow.wrapPanel.MaxWidth = 1850;
+            
+
+            Card[][] cards = board.GetCards(); // The cards to display
+
+            //ObservableCollection<Button> buttons = new ObservableCollection<Button>();
+
+            for (int x = 0; x < board.GetX(); x++)
+            {
+                for (int y = 0; y < board.GetY(); y++)
                 {
-                    mainWindow.CreateCard(50,50,100,10);
-                }
+                    //buttons.Add(mainWindow.CreateCard(mainWindow.grid, CARD_X, CARD_Y, marginLeft: 10, marginTop: 10, marginRight: 10, marginBottom: 10, content: i.ToString()));
+                    mainWindow.CreateCard(mainWindow.grid, x, y, CARD_X, CARD_Y, marginLeft: 10, marginTop: 10, marginRight: 10, marginBottom: 10, content: "J'en ai MARRE");
+                }                
             }
 
-            //Console.WriteLine($"Turn {board.GetTurns()}");
-            //Console.WriteLine("Here's the current board:\n");
-            //string abscissa = "  "; // Display the abscissa axis above the board
-            //for (int x = 1; x <= board.GetX(); x++)
-            //{
-            //    abscissa += x.ToString() + " ";
-            //}
-            //Console.WriteLine(abscissa + "\n");
+
 
             //for (int y = 0; y < board.GetY(); y++) // Display the board
             //{
@@ -79,7 +128,6 @@ namespace Memory.View
             //    Console.Write("\n\n");
             //}
 
-            //Console.Write("\n\n");
         }
 
         /// <summary>
