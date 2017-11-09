@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9F5656B-1DE3-41D9-B6FE-BD2F05EDBD80}</ProjectGuid>
+    <ProjectGuid>{E1ECC243-D885-49CD-96DE-3F430474F6A5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Memory</RootNamespace>
     <AssemblyName>Memory</AssemblyName>
@@ -36,8 +36,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -52,22 +50,21 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="Program.cs" />
-    <Compile Include="View\Display.cs" />
+    </ApplicationDefinition>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controller\Game.cs" />
+    <Compile Include="View\Display.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Game.cs" />
     <Compile Include="Model\Board.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -97,48 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\MainWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_1-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_2-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_4-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_7-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_8-3.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_9-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_10-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_11-3.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_11-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_12-4.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hanafuda_13-4.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

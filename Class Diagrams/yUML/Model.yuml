@@ -1,9 +1,0 @@
-// Model Class Diagram
-// {type:class}
-// {direction:topDown}
-
-[Board|-cards:List<Card>;-score:int|+DefinePositions():void;+SetScore(int):void;+GetScore():int]
-
-[Card|-id:int;-symbol:string;-isFound:bool;-isHidden:bool;-cardPaired:int;-pos:Tuple<int,int>|+SetId(int):void;+GetId():int;+SetIsFound(bool):void;+GetIsFound():bool;+SetIsHidden(bool):void;+GetIsHidden():bool;+SetCardPair(int):void;+GetCardPair():int;+SetPos(Tuple<int,int>):void;+GetPos():Tuple<int,int>]
-
-[Board]++1-*>[Card]

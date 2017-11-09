@@ -50,11 +50,10 @@ namespace Memory.Model
             {
                 for (int x = 0; x < X; x++)
                 {
-                    string symbol = "symbols[" + pair + "]";
-                    cards[y][x] = new Card(symbol); // The first card of the pair.
+                    cards[y][x] = new Card(pair); // The first card of the pair.
                     if (x+1 >= X) // If the line is finished the program goes to the next line and takes the first card as the paired card
                     {
-                        cards[y + 1][0] = new Card(symbol); // Same symbol as the first card of the pair
+                        cards[y + 1][0] = new Card(pair); // Same symbol as the first card of the pair
                         cards[y + 1][0].SetCardPaired(cards[y][x]);
                         cards[y][x].SetCardPaired(cards[y + 1][0]);
                         y++;
@@ -62,7 +61,7 @@ namespace Memory.Model
                     }
                     else // If the line is not finished the program takes the next card in the line as the paired card
                     {
-                        cards[y][x + 1] = new Card(symbol);
+                        cards[y][x + 1] = new Card(pair);
                         cards[y][x + 1].SetCardPaired(cards[y][x]);
                         cards[y][x].SetCardPaired(cards[y][x + 1]);
                         x++;
@@ -129,9 +128,9 @@ namespace Memory.Model
             {
                 foreach (Card card in line)
                 {
-                    if ((card.GetCardPaired()).GetSymbol() != card.GetSymbol())
+                    if ((card.GetCardPaired()).GetPair() != card.GetPair())
                     {
-                        card.SetSymbol(card.GetCardPaired().GetSymbol());
+                        card.SetPair(card.GetCardPaired().GetPair());
                     }
                 }                    
             }
