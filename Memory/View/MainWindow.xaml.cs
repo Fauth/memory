@@ -26,7 +26,7 @@ namespace Memory
         {
             InitializeComponent();
 
-            Display display = new Display(this, 4, 4);
+            Display display = new Display(this, 2, 2);
         }
     }
 }

@@ -186,12 +186,27 @@ namespace Memory.View
 
         public void PrintTurns()
         {
-            //float pairNumber = (float)(board.GetX() * board.GetY()) / (float)2;
-            //int proportionCorrect = (int)((float)(100 * board.GetX() * board.GetY()) / (float)(2 * board.GetTurns()));
-            //Console.WriteLine($"\nGame finished! It took you {board.GetTurns()} turns to find the {pairNumber} pairs!");
-            //Console.WriteLine($"Proportion of correct guesses: {proportionCorrect}%");
-            //Console.WriteLine("\nPush a key to end.");
-            //Console.ReadLine();
+            Window dialog = new Window();
+            dialog.Title = "Game finished!";
+            dialog.SizeToContent = SizeToContent.WidthAndHeight;
+            //dialog.Closing += game.Exit();
+
+            TextBox failure = new TextBox();
+            failure.Margin = new Thickness(20);
+            float pairNumber = (float)(board.GetX() * board.GetY()) / (float)2;
+            int proportionCorrect = (int)((float)(100 * board.GetX() * board.GetY()) / (float)(2 * board.GetTurns()));
+            string turns = $"\nGame finished! It took you {board.GetTurns()} turns to find the {pairNumber} pairs!";
+            string correct = $"Proportion of correct guesses: {proportionCorrect}%";
+            string end = "Close to end";
+            failure.Text = turns + "\n" + correct + "\n\n" + end;
+            //failure.Height = 200;
+            //failure.Width = 200;
+            failure.HorizontalContentAlignment = HorizontalAlignment.Center;
+            failure.VerticalContentAlignment = VerticalAlignment.Center;
+            dialog.Content = failure;
+
+            dialog.ShowDialog();
+            
         }
     }
 }

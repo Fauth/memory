@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory"
         mc:Ignorable="d"
-        Title="Memory" >
+        Title="Memory" Icon="pack://siteoforigin:,,,/Resources/icon.ico" >
 
     <Grid Name="cardGrid" />
 

@@ -5,6 +5,8 @@ using System.Windows.Controls;
 using Memory.Model;
 using Memory.View;
 using System.Diagnostics;
+using System.Windows.Threading;
+using System.IO;
 
 namespace Memory
 {
@@ -45,6 +47,18 @@ namespace Memory
         /// <param name="e">The event arguments.</param>
         public void CardChosen(object sender, EventArgs e)
         {
+            Window dialog = new Window();
+            dialog.Title = "Failure!";
+            dialog.SizeToContent = SizeToContent.WidthAndHeight;
+            dialog.Left = 1000;
+            TextBox failure = new TextBox();
+            failure.Text = "Wrong card :(";
+            failure.Height = 200;
+            failure.Width = 200;
+            failure.HorizontalContentAlignment = HorizontalAlignment.Center;
+            failure.VerticalContentAlignment = VerticalAlignment.Center;
+            dialog.Content = failure;
+
             Card card = (Card)((Image)sender).Tag; // The card which has been selected
 
             if (card.GetIsDisplayed()) // A displayed card cannot be chosen
@@ -63,8 +77,9 @@ namespace Memory
                 {
                     card.SetIsDisplayed(true);
                     display.PrintBoard();
-                    Window test = new Window();
-                    System.Threading.Thread.Sleep(2000); // Wait for 2 seconds: the player can see both cards he selected
+
+                    dialog.ShowDialog();
+                    //System.Threading.Thread.Sleep(2000); // Wait for 2 seconds: the player can see both cards he selected
                     card.SetIsDisplayed(false); // Then the cards are hidden again
                     firstCardSelected.SetIsDisplayed(false);
                     display.PrintBoard();
@@ -75,22 +90,7 @@ namespace Memory
                     firstCardSelected.SetIsFound(true);
                     display.PrintBoard();
                 }
-                //if (card.GetCardPaired() == firstCardSelected) // The two cards are paired
-                //{
-                //    card.SetIsFound(true); // The pair is found
-                //    firstCardSelected.SetIsFound(true);
-                //    display.PrintBoard();
-                //}
-                //else // The two cards do not match
-                //{
-                //    card.SetIsDisplayed(true);
-                //    display.PrintBoard();
-                //    //System.Threading.Thread.Sleep(2000); // Wait for 2 seconds: the player can see both cards he selected
-                //    card.SetIsDisplayed(false); // Then the cards are hidden again
-                //    firstCardSelected.SetIsDisplayed(false);
-                //    display.PrintBoard();
-                //}
-                
+
                 board.IncrementTurns(); // Increments the turns counter
                 firstCardSelected = null; // Reinitialize the selected card
 
@@ -98,6 +98,10 @@ namespace Memory
             }
         }
 
+
+        /// <summary>
+        /// Go to the next turn by incrementing the counter and refreshing the display.
+        /// </summary>
         public void NextTurn()
         {
             if (IsFinished())
@@ -132,6 +136,15 @@ namespace Memory
                 }
             }
             return true;
+        }
+
+
+        /// <summary>
+        /// Exits the game.
+        /// </summary>
+        public void Exit(object sender)
+        {
+
         }
     }
 }
