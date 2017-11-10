@@ -28,10 +28,10 @@ namespace Memory.View
         private Game game;
         private Board board;
         private Card[][] cards;
-        private Button[][] buttons;
+        private Image[][] images;
 
-        private ImageBrush[] symbols; // Pictures to show on the cards
-        ImageBrush hidden; // Picture to show on hidden cards
+        private BitmapImage[] symbols; // Pictures to show on the cards
+        BitmapImage hidden; // Picture to show on hidden cards
 
         public const int CARD_X = 127; // Width (in pixels) of every card
         public const int CARD_Y = 200; // Height (in pixels) of every card
@@ -70,13 +70,21 @@ namespace Memory.View
         {
             string[] filePaths = Directory.GetFiles(@"./Resources/Cards/"); // All available files
             Board.ShuffleArray(filePaths); // Shuffles the list to get different images each game
-            symbols = new ImageBrush[filePaths.Length]; // An array containing all the images
+            symbols = new BitmapImage[filePaths.Length]; // An array containing all the images
             for (int i = 0;  i < filePaths.Length && i < number; i ++)
             {
-                symbols[i] = new ImageBrush(new BitmapImage(new Uri(filePaths[i], UriKind.Relative)));
+                symbols[i] = new BitmapImage();
+                symbols[i].BeginInit();
+                symbols[i].UriSource = new Uri(filePaths[i], UriKind.Relative);
+                symbols[i].CacheOption = BitmapCacheOption.OnLoad;
+                symbols[i].EndInit();
             }
-            
-            hidden = new ImageBrush(new BitmapImage(new Uri(@"./Resources/hidden.png", UriKind.Relative))); 
+
+            hidden = new BitmapImage();
+            hidden.BeginInit();
+            hidden.UriSource = new Uri(@"./Resources/hidden.png", UriKind.Relative);
+            hidden.CacheOption = BitmapCacheOption.OnLoad;
+            hidden.EndInit();
         }
 
 
@@ -98,18 +106,20 @@ namespace Memory.View
                 mainWindow.cardGrid.RowDefinitions.Add(row);
             }
 
-            buttons = new Button[board.GetY()][];
+            images = new Image[board.GetY()][];
             for (int y = 0; y < board.GetY(); y++)
             {
-                buttons[y] = new Button[board.GetX()];
+                images[y] = new Image[board.GetX()];
             }
             cards = board.GetCards(); // The cards to display
 
-            for (int x = 0; x < board.GetX(); x++) // Creates the buttons
+            for (int x = 0; x < board.GetX(); x++) // Creates the cards
             {
                 for (int y = 0; y < board.GetY(); y++)
                 {
-                    buttons[y][x] = CreateCard(mainWindow.cardGrid, x, y, CARD_X, CARD_Y, marginLeft: 10, marginTop: 10, marginRight: 10, marginBottom: 10, content: "");
+                    images[y][x] = CreateCard(mainWindow.cardGrid, x, y, CARD_X, CARD_Y, marginLeft: 10, marginTop: 10, marginRight: 10, marginBottom: 10);
+                    images[y][x].Tag = cards[y][x];
+                    images[y][x].MouseLeftButtonUp += game.CardChosen;
                 }
             }
         }
@@ -122,109 +132,53 @@ namespace Memory.View
         {
             cards = board.GetCards(); // The cards to display
 
-            //ObservableCollection<Button> buttons = new ObservableCollection<Button>();
-
             for (int x = 0; x < board.GetX(); x++)
             {
                 for (int y = 0; y < board.GetY(); y++)
                 {
-                    Button button = buttons[y][x];
+                    Image image = images[y][x];
                     Card card = cards[y][x];
 
-                    if (card.GetIsDisplayed())
+                    if (card.GetIsFound())
                     {
-                        button.Background = symbols[card.GetPair()];
-                        if (card.GetIsFound())
-                        {
-                            button.Opacity = 0.7;
-                        }
+                        image.Source = symbols[card.GetPair()];
+                        image.Opacity = 0.7;
+                    }
+                    else if (card.GetIsDisplayed())
+                    {
+                        image.Source = symbols[card.GetPair()];
+                        image.Opacity = 1;
                     }
                     else
                     {
-                        button.Background = hidden;
+                        image.Source = hidden;
+                        image.Opacity = 1;
                     }
-                }                
+                }                   
             }
-
-
-
-            //for (int y = 0; y < board.GetY(); y++) // Display the board
-            //{
-            //    Console.Write((y + 1).ToString() + " "); // Ordinate axis on the left
-            //    for (int x = 0; x < board.GetX(); x++)
-            //    {
-            //        if (cards[y][x].GetIsDisplayed())
-            //        {
-            //            Console.Write(cards[y][x].GetSymbol() + " ");
-            //        }
-            //        else
-            //        {
-            //            Console.Write("* ");
-            //        }
-            //    }
-            //    Console.Write("\n\n");
-            //}
-
         }
 
         /// <summary>
-        /// Asks the player to choose a card.
+        /// Creates an image
         /// </summary>
-        /// <returns>The choosen card.</returns>
-        //public Card WaitPlayer()
-        //{
-        //Console.WriteLine("Which card do you chose?");
-        //bool entryCorrect = false;
-        //int x = 0;
-        //int y = 0;
-        //while (!entryCorrect) // Read the colon number, try again until a correct input is entered
-        //{
-        //    Console.Write("Colon: ");
-        //    entryCorrect = Int32.TryParse(Console.ReadLine(), out x); // Check whether the input is an int
-        //    if (x < 1 || x > board.GetX()) // Check whether the input is in the right range
-        //    {
-        //        entryCorrect = false;
-        //    }
-        //}
-        //entryCorrect = false;
-        //while (!entryCorrect) // Read the line number, try again until a correct input is entered
-        //{
-        //    Console.Write("Line: ");
-        //    entryCorrect = Int32.TryParse(Console.ReadLine(), out y);
-        //    if (y < 1 || x > board.GetY()) // Check whether the input is in the right range
-        //    {
-        //        entryCorrect = false;
-        //    }
-        //}
-
-        //Console.Write("\n");
-
-        //return board.GetCards()[y - 1][x - 1];
-        //}
-
-        /// <summary>
-        /// Creates a button
-        /// </summary>
-        /// <param name="panel">The parent to which add this button</param>
-        /// <param name="x">The button column</param>
-        /// <param name="y">The button row</param>
-        /// <param name="width">The button width</param>
-        /// <param name="height">The button height</param>
-        /// <param name="content">The text displayed in the button. Optional</param>
-        /// <param name="marginLeft">The margin to keep at the left of the button. Optional</param>
-        /// <param name="marginTop">The margin to keep at the top of the button. Optional</param>
-        /// <param name="marginRight">The margin to keep at the right of the button. Optional</param>
-        /// <param name="marginBottom">The margin to keep at the bottom of the button. Optional</param>
-        /// <returns>The created button</returns>
-        public Button CreateCard(Panel panel, int x, int y, int width, int height, string content = "", int marginLeft = 0, int marginTop = 0, int marginRight = 0, int marginBottom = 0)
+        /// <param name="panel">The parent to which add this image</param>
+        /// <param name="x">The image column</param>
+        /// <param name="y">The image row</param>
+        /// <param name="width">The image width</param>
+        /// <param name="height">The image height</param>
+        /// <param name="marginLeft">The margin to keep at the left of the image. Optional</param>
+        /// <param name="marginTop">The margin to keep at the top of the image. Optional</param>
+        /// <param name="marginRight">The margin to keep at the right of the image. Optional</param>
+        /// <param name="marginBottom">The margin to keep at the bottom of the image. Optional</param>
+        /// <returns>The created image</returns>
+        public Image CreateCard(Panel panel, int x, int y, int width, int height, int marginLeft = 0, int marginTop = 0, int marginRight = 0, int marginBottom = 0)
         {
-            Button card = new Button();
+            Image card = new Image();
             Grid.SetRow(card, y);
             Grid.SetColumn(card, x);
             card.Margin = new Thickness(marginLeft, marginTop, marginRight, marginBottom);
             card.Height = height;
             card.Width = width;
-            card.Content = content;
             panel.Children.Add(element: card);
 
             return card;

@@ -18,11 +18,18 @@
         public int GetPair() => pair;
         public void SetPair(int pair) => this.pair = pair;
 
-        public bool GetIsDisplayed() => isDisplayed;
-        public void SetIsDisplayed(bool isDisplayed) => this.isDisplayed = isDisplayed;
+        public bool GetIsDisplayed() => isDisplayed || isFound;
+        public void SetIsDisplayed(bool isDisplayed) => this.isDisplayed = isDisplayed || isFound;
 
-        public bool GetIsFound() => isDisplayed;
-        public void SetIsFound(bool isFound) => this.isFound = isFound;
+        public bool GetIsFound() => isFound;
+        public void SetIsFound(bool isFound)
+        {
+            if (isFound)
+            {
+                this.isDisplayed = true;
+            }
+            this.isFound = isFound;
+        }
 
 
         // Constructors
